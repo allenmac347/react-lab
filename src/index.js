@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import TicTaceToeGame from './TicTacToe'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <TicTaceToeGame />
   </React.StrictMode>,
   document.getElementById('root')
 );

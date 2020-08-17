@@ -1,3 +1,8 @@
+## About this Repo
+
+This repo is intended for prototyping different components, testing out different packages, and mini projects. 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

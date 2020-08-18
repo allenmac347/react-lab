@@ -21,15 +21,6 @@ import './TicTacToe.css';
 //changeSquare changes state, causing TicTacToeGame to re-render, where it would loop again to beginning
 //To fix, did onClick = {() => this.changeSquare(index)}, which passes it in as a function to call instead of calling the function 
 
-class SquareClass extends React.Component{
-    render(){
-        return(
-            <button onClick={() => this.props.onClick()}>
-                {this.props.value}
-            </button>
-        );
-    }
-}
 
 function SquareFunction(props){
     return(

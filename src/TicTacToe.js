@@ -1,6 +1,8 @@
 import React from 'react';
+import './TicTacToe.css';
 
 //TicTacToe with classes  
+//made with the help of react tutorial 
 //Need a board
 //Need a way to keep track of square values 
 //Square component, should it be a function or a class?
@@ -29,8 +31,13 @@ class SquareClass extends React.Component{
     }
 }
 
-
-
+function SquareFunction(props){
+    return(
+        <button class='square' onClick={() => props.onClick()}>
+            {props.value}
+        </button>
+    );
+}
 
 class TicTacToeGame extends React.Component{
     constructor(props){
@@ -55,18 +62,48 @@ class TicTacToeGame extends React.Component{
     render(){
         return(
             <div>
-                <SquareClass
-                    value={this.state.squares[0]}
-                    onClick={() => this.changeSquare(0)}
-                />
-                <SquareClass
-                    value={this.state.squares[1]}
-                    onClick={() => this.changeSquare(1)}
-                />
-                <SquareClass
-                    value={this.state.squares[2]}
-                    onClick={() => this.changeSquare(2)}
-                />
+                <div class='row'>
+                    <SquareFunction
+                        value={this.state.squares[0]}
+                        onClick={() => this.changeSquare(0)}
+                    />
+                    <SquareFunction
+                        value={this.state.squares[1]}
+                        onClick={() => this.changeSquare(1)}
+                    />
+                    <SquareFunction
+                        value={this.state.squares[2]}
+                        onClick={() => this.changeSquare(2)}
+                    />
+                </div>
+                <div class='row'>
+                    <SquareFunction
+                        value={this.state.squares[3]}
+                        onClick={() => this.changeSquare(3)}
+                    />
+                    <SquareFunction
+                        value={this.state.squares[4]}
+                        onClick={() => this.changeSquare(4)}
+                    />
+                    <SquareFunction
+                        value={this.state.squares[5]}
+                        onClick={() => this.changeSquare(5)}
+                    />
+                </div>
+                <div class='row'>
+                    <SquareFunction
+                        value={this.state.squares[6]}
+                        onClick={() => this.changeSquare(6)}
+                    />
+                    <SquareFunction
+                        value={this.state.squares[7]}
+                        onClick={() => this.changeSquare(7)}
+                    />
+                    <SquareFunction
+                        value={this.state.squares[8]}
+                        onClick={() => this.changeSquare(8)}
+                    />
+                </div>
             </div>
         );
     }

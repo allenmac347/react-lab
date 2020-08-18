@@ -10,7 +10,7 @@ import React from 'react';
 //Answer: lift state up to Game, where it will store state of Square
 //Instead of storing state of Square in Square component, store in Game and pass state into Square as a prop 
 //Square will function passed in props given by Game to change state 
-//Square will rerender since props have changed?
+//Square will rerender since props have changed? No, Game will rerender that Square because we used Game state to render that Square
 
 
 //Bug: infinite render 
@@ -39,6 +39,7 @@ class TicTacToeGame extends React.Component{
             squares: new Array(9).fill(null),
             turn: false
         }; 
+        this.changeSquare = this.changeSquare.bind(this); 
     }
 
     changeSquare(index) {

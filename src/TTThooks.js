@@ -6,6 +6,12 @@ import React, {useState} from 'react';
 //If we do, how do we share state between game and squares?
 
 //Can pass in a function call to setState method for more complex behavior (such as changing other states concurrently!)
+//So why hooks? provide a way to use stateful logic
+//Let's say you've got component A, with complex logic and state values
+//Hooks lets us access state values and reuse logic in component A from component B. We can just give thay logic to B
+//How can we do the same with classes? If we wanted to access the state values of A we would need to instead refactor component B to hold state values as well as logic from A
+//What if we wanted to share how component A stores state/logic between components B and C? A needs to be a higher order component of B and C 
+
 
 function Game(){
     const [squares, updateSquare] = useState(new Array(9).fill(null))

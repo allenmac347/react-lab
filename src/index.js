@@ -2,14 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import TicTaceToeGame from './TicTacToe'
-import Game from './TTThooks'
-import TodoApp from './todo'
+import TicTaceToeGame from './TicTacToe';
+import Game from './TTThooks';
+import TodoApp from './todo';
+import BoxMove from './FirstSpring';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TodoApp />
+    <BoxMove/>
   </React.StrictMode>,
   document.getElementById('root')
 );

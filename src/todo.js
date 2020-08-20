@@ -9,16 +9,37 @@ import React, {useState} from 'react';
 //setState on our todoArray by appending new element if we click on a button 
 //render strings in todoItems using map function 
 
+//When using map, each element must have a unique key 
+//How do we generate keys for each user input?
+//Can't be based on input since because of duplicate user info 
+//use time? generate a timestamp for every pushed item on 
+//for purposes of this component, just went with something simple, having a counter
+
 
 function TodoApp(){
     const [todoItems, changeTodo] = useState([]);
     const [currInput, changeInput] = useState(''); 
+    const [uniqueId, updateId] = useState(0);
     function addTodoItem(event){
         const newTodo = todoItems.slice(); 
-        newTodo.push(currInput); 
+        const newInput = {
+            text: currInput,
+            identifier: uniqueId
+        }
+        newTodo.push(newInput); 
         changeTodo(newTodo); 
         changeInput(''); 
+        updateId(uniqueId + 1);
         event.preventDefault(); 
+        return; 
+    }
+
+    function removeTodoItem(index){
+        const newTodo = todoItems.slice(); 
+        console.log(newTodo);
+        newTodo.splice(index, 1);
+        console.log(newTodo);
+        changeTodo(newTodo); 
         return; 
     }
 
@@ -33,11 +54,13 @@ function TodoApp(){
                 <input type="submit" value="Submit" onClick={(event) => addTodoItem(event)}/>
             </form>
             <p>New Todo Item: {currInput}</p>
-            {todoItems.map((todo) => 
-                {return([
-                    <p>{todo}</p>,
-                    <button>remove priority</button>
-                ])}
+            {todoItems.map((todo, index) => 
+                {return(
+                    <React.Fragment key={todo.identifier}>
+                        <p>{todo.text}</p>,
+                        <button onClick={() => removeTodoItem(index)}>remove priority</button>
+                    </React.Fragment>
+                )}
             )}
         </div>
     );

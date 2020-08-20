@@ -14,31 +14,42 @@ import {useSpring, animated, interpolate} from 'react-spring';
 function BoxMove(){
     //set up state for coordinates of box
     const [coords, changeCoords] = useState([0, 0]); 
+    const [xCoord, changeX] = useState(0); 
+    const [yCoord, changeY] = useState(0); 
     //set up event listener for key presses
-    useEffect(() => {
-        
-    });
-    const boxStyle = {
-        position: 'relative',
-        right: coords[0],
-        top:  coords[1],
-        width: '200px',
-        border: '3px solid red',
-        tabIndex: -1
-    };
     function moveBox(event){
         console.log("detected key press!");
-        // const newX = coords[0];
-        // const newY = coords[1];
-        // newX = event.keycode === 37 ? newX + 5 : newX; 
-        // newX = event.keycode === 39 ? newX - 5 : newX; 
-        // newY = event.keycode === 38 ? newY + 5 : newY; 
-        // newY = event.keycode === 40 ? newY - 5 : newY; 
-        // changeCoords([newX, newY]); 
+        console.log(event.keyCode);
+        if(event.keyCode === 37){
+            changeX(xCoord => xCoord + 5);
+        }
+        if(event.keyCode === 39){
+            changeX(xCoord => xCoord - 5);
+        }
+        if(event.keyCode === 38){
+            changeY(yCoord => yCoord - 5);
+        }
+        if(event.keyCode === 40){
+            changeY(yCoord => yCoord + 5);
+        }
         return; 
     }
+    useEffect(() => {
+        //add and remove event listners needs same function handler
+        //if we did () => {function}, these are technically two different functions 
+        const handler = (event) => {moveBox(event)}
+        document.addEventListener('keydown', handler);  
+        return(() => {document.removeEventListener('keydown', handler)}); 
+    }, []);
+    const boxStyle = {
+        position: 'relative',
+        right: xCoord,
+        top:  yCoord,
+        width: '100px',
+        border: '3px solid red',
+    };
     return(
-        <div style={boxStyle} onKeyDown={(event) => moveBox(event)}>
+        <div style={boxStyle}>
             <p>some text</p>
         </div>
     ); 

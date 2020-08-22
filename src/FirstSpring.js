@@ -95,4 +95,15 @@ function FirstSpringApp(){
     );
 }
 
-export default FirstSpringApp; 
+
+//Lets try making a box slide across the screen
+//we want to expand width of a box 
+
+function SecondSpringApp(){
+    const props = useSpring({width: '1000px', border:'3px solid red', from: {width: '100px', border:'3px solid red'}});
+    return(
+        <animated.div style={props}>awesome</animated.div>
+    );
+}
+
+export default SecondSpringApp;

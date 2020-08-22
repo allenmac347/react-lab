@@ -5,12 +5,12 @@ import App from './App';
 import TicTaceToeGame from './TicTacToe';
 import Game from './TTThooks';
 import TodoApp from './todo';
-import FirstSpringApp from './FirstSpring';
+import SecondSpringApp from './FirstSpring';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <FirstSpringApp/>
+    <SecondSpringApp/>
   </React.StrictMode>,
   document.getElementById('root')
 );

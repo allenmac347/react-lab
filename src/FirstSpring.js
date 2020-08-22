@@ -13,7 +13,6 @@ import {useSpring, animated, interpolate} from 'react-spring';
 
 function BoxMove(){
     //set up state for coordinates of box
-    const [coords, changeCoords] = useState([0, 0]); 
     const [xCoord, changeX] = useState(0); 
     const [yCoord, changeY] = useState(0); 
     //set up event listener for key presses
@@ -55,8 +54,45 @@ function BoxMove(){
     ); 
 }
 
-function FirstSpringApp(){
 
+//Springs hooks which contain style props for elements 
+//Lets make a component where if you click on text, it will fade in 
+//if you click on it again, it will fade out
+
+//mini problem, how do you seperate didMount and didUpdate?
+//pass in an empty array
+
+
+// function FirstSpringApp(){
+//     const [toggle, setToggle] = useState(true); 
+//     const [props, set, stop] = useSpring(() => ({opacity: 1, from: {opacity: 0}}));
+//     function fadeText(){
+//         setToggle(!toggle); 
+//         set({opacity: toggle ? 1 : 0});
+//     }
+//     return(
+//         <animated.h1 style={props} onClick={()=>fadeText()}>This is a test</animated.h1>
+//     );
+// }
+
+//Why is setState not immediately updating?
+//when you use a state variable within a function and call setState to change it, it will keep using the old state variable
+//this is because state updates are not reflected in current closures
+//state updates will not be reflected in current render, but next render
+
+
+function FirstSpringApp(){
+    const [toggle, setToggle] = useState(true); 
+    const [props, set, stop] = useSpring(() => ({opacity: 1, from: {opacity: 0}}));
+    function fadeText(){
+        setToggle(!toggle); 
+    }
+    useEffect(() => {
+        set({opacity: toggle ? 1 : 0});
+    }, [toggle]);
+    return(
+        <animated.h1 style={props} onClick={()=>fadeText()}>This is a test</animated.h1>
+    );
 }
 
-export default BoxMove; 
+export default FirstSpringApp; 
